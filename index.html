@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>篮球联赛赛程 | Basketball League Schedule</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif; background: #f4f1ec; color: #1f1a17; line-height: 1.6; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 20px 16px 40px; }
+  header { text-align: center; padding: 28px 0 8px; }
+  header .ball { font-size: 40px; }
+  h1 { font-size: 30px; margin: 6px 0 2px; }
+  header .sub { color: #6b625c; font-size: 15px; }
+  .lang { text-align: center; margin: 14px 0 22px; }
+  .lang button { border: 1px solid #d8d2cb; background: #fff; color: #4a443f; padding: 6px 18px; font-size: 14px; cursor: pointer; border-radius: 20px; margin: 0 4px; }
+  .lang button.active { background: #c2410c; border-color: #c2410c; color: #fff; }
+  h2 { font-size: 19px; margin: 26px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e5ddd5; }
+  .card { background: #fff; border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .card .date { font-size: 20px; font-weight: 700; }
+  .card .meta { color: #6b625c; margin-top: 4px; font-size: 15px; }
+  .badge { display: inline-block; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-top: 8px; }
+  .badge.comp { background: #fee2e2; color: #b91c1c; }
+  .badge.casual { background: #dcfce7; color: #15803d; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #f0ebe6; }
+  th { background: #faf7f4; color: #6b625c; font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  .total { font-size: 26px; font-weight: 800; }
+  .fees { color: #6b625c; font-size: 13px; margin-top: 8px; line-height: 1.8; }
+  ul.rules { background: #fff; border-radius: 12px; padding: 16px 18px 16px 36px; box-shadow: 0 1px 3px rgba(0,0,0,.06); font-size: 15px; }
+  ul.rules li { margin-bottom: 8px; }
+  ul.rules li:last-child { margin-bottom: 0; }
+  .notes { background: #fff7ed; border-radius: 12px; padding: 16px 18px; font-size: 15px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .notes div { margin-bottom: 6px; }
+  .notes div:last-child { margin-bottom: 0; }
+  footer { text-align: center; color: #9a938c; font-size: 13px; margin-top: 30px; }
+  [data-en] { display: none; }
+  body.en [data-zh] { display: none; }
+  body.en [data-en] { display: block; }
+  body.en span[data-en], body.en td[data-en] { display: inline; }
+  body.en th[data-en] { display: table-cell; }
+  body.en td[data-zh], body.en th[data-zh] { display: none; }
+  span[data-zh], td[data-zh] { display: inline; }
+  th[data-zh] { display: table-cell; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="ball">🏀</div>
+    <h1><span data-zh>篮球联赛赛程</span><span data-en>Basketball League Schedule</span></h1>
+    <div class="sub"><span data-zh>哥伦布篮球联赛 · 赛程与费用</span><span data-en>Columbus Basketball League · Schedule &amp; Costs</span></div>
+  </header>
+
+  <div class="lang">
+    <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <h2><span data-zh>即将到来的比赛</span><span data-en>Upcoming Games</span></h2>
+
+  <div class="card">
+    <div class="date"><span data-zh>11月20日星期五</span><span data-en>Friday, November 20</span></div>
+    <div class="meta"><span data-zh>下午 6:00–8:00 · McDonald 篮球场 3号场 · Anheuser Busch 体育公园</span><span data-en>6:00–8:00 PM · McDonald Basketball Court 3 · Anheuser Busch Sports Park</span></div>
+    <div class="meta"><span data-zh>场地费 $80.85（已付）</span><span data-en>Court rental $80.85 (paid)</span></div>
+    <span class="badge casual"><span data-zh>休闲</span><span data-en>Casual</span></span>
+  </div>
+
+  <div class="card">
+    <div class="date"><span data-zh>11月22日星期日</span><span data-en>Sunday, November 22</span></div>
+    <div class="meta"><span data-zh>下午 4:00–6:00 · McDonald 篮球场 1号场 · Anheuser Busch 体育公园</span><span data-en>4:00–6:00 PM · McDonald Basketball Court 1 · Anheuser Busch Sports Park</span></div>
+    <div class="meta"><span data-zh>场地费 $80.85（已付）</span><span data-en>Court rental $80.85 (paid)</span></div>
+    <span class="badge comp"><span data-zh>竞技</span><span data-en>Competitive</span></span>
+  </div>
+
+  <h2><span data-zh>全部赛程</span><span data-en>All Bookings</span></h2>
+  <table>
+    <tr>
+      <th><span data-zh>日期</span><span data-en>Date</span></th>
+      <th><span data-zh>时间</span><span data-en>Time</span></th>
+      <th><span data-zh>场地</span><span data-en>Court</span></th>
+      <th><span data-zh>类型</span><span data-en>Type</span></th>
+      <th><span data-zh>费用</span><span data-en>Cost</span></th>
+    </tr>
+    <tr><td><span data-zh>11月7日周六</span><span data-en>Sat, Nov 7</span></td><td>4:00–6:00 PM</td><td><span data-zh>3号场</span><span data-en>Court 3</span></td><td><span data-zh>竞技</span><span data-en>Competitive</span></td><td>$80.85</td></tr>
+    <tr><td><span data-zh>11月8日周日</span><span data-en>Sun, Nov 8</span></td><td>4:00–6:00 PM</td><td><span data-zh>1号场</span><span data-en>Court 1</span></td><td><span data-zh>休闲</span><span data-en>Casual</span></td><td>$80.85</td></tr>
+    <tr><td><span data-zh>11月15日周日</span><span data-en>Sun, Nov 15</span></td><td>4:00–6:00 PM</td><td><span data-zh>1号场</span><span data-en>Court 1</span></td><td><span data-zh>竞技</span><span data-en>Competitive</span></td><td>$80.85</td></tr>
+    <tr><td><span data-zh>11月20日周五</span><span data-en>Fri, Nov 20</span></td><td>6:00–8:00 PM</td><td><span data-zh>3号场</span><span data-en>Court 3</span></td><td><span data-zh>休闲</span><span data-en>Casual</span></td><td>$80.85</td></tr>
+    <tr><td><span data-zh>11月22日周日</span><span data-en>Sun, Nov 22</span></td><td>4:00–6:00 PM</td><td><span data-zh>1号场</span><span data-en>Court 1</span></td><td><span data-zh>竞技</span><span data-en>Competitive</span></td><td>$80.85</td></tr>
+  </table>
+
+  <h2><span data-zh>费用总览</span><span data-en>Cost Overview</span></h2>
+  <div class="card">
+    <div><span data-zh>累计场地费用（5 场）</span><span data-en>Total court cost (5 bookings)</span></div>
+    <div class="total">$404.25</div>
+    <div class="fees">
+      <span data-zh>会员费共收 $4,448 · 当前结余 $4,213 · 访客费共 $8（11月8日一位访客，每场 $8）<br>最后更新：2026年11月9日</span>
+      <span data-en>Total fees collected from members $4,448 · Current balance $4,213 · Guest fees so far $8 (one guest on Nov 8, $8 per game)<br>Last updated: Nov 9, 2026</span>
+    </div>
+  </div>
+
+  <h2><span data-zh>俱乐部规则</span><span data-en>Club Rules</span></h2>
+  <ul class="rules">
+    <li><span data-zh>赛程每周一自动更新。</span><span data-en>The schedule updates automatically on Mondays.</span></li>
+    <li><span data-zh>每周一场和每周两场交替进行。</span><span data-en>Weeks alternate between one game and two games.</span></li>
+    <li><span data-zh>每周一场时为竞技赛；周六加周日时，周六竞技、周日休闲；工作日加周末时，工作日休闲、周末竞技。一周从周一到周日。</span><span data-en>One game in a week is competitive. Saturday + Sunday means Saturday competitive, Sunday casual. Weekday + weekend means the weekday game casual, the weekend game competitive. A week runs Monday to Sunday.</span></li>
+    <li><span data-zh>每三个月打一场正式比赛，之后重新选队和选队长。</span><span data-en>Every three months the league plays an official game, after which new teams and captains are selected.</span></li>
+  </ul>
+
+  <h2><span data-zh>出发前须知</span><span data-en>Before You Go</span></h2>
+  <div class="notes">
+    <div><span data-zh>🏀 本站无需报名——仅提供信息。</span><span data-en>🏀 No sign-up needed — this page is information only.</span></div>
+    <div><span data-zh>🏀 公园不提供篮球——有的话请带一个。</span><span data-en>🏀 The park does not provide basketballs — bring one if you have it.</span></div>
+    <div><span data-zh>⏱️ 请提前几分钟到场热身，准时开打。</span><span data-en>⏱️ Arrive a few minutes early to warm up; games start on time.</span></div>
+  </div>
+
+  <footer><span data-zh>最后更新：2026年11月16日</span><span data-en>Last updated: Nov 16, 2026</span></footer>
+</div>
+<script>
+  function setLang(l) {
+    document.body.classList.toggle('en', l === 'en');
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  }
+</script>
+</body>
+</html>
