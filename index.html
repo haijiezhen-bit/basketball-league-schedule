@@ -26,6 +26,12 @@
   th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #f0ebe6; }
   th { background: #faf7f4; color: #6b625c; font-weight: 600; }
   tr:last-child td { border-bottom: none; }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tab-btn { border: 1px solid #d8d2cb; background: #fff; color: #4a443f; padding: 6px 16px; font-size: 14px; cursor: pointer; border-radius: 20px; }
+  .tab-btn.active { background: #c2410c; border-color: #c2410c; color: #fff; font-weight: 700; }
+  .month-panel { display: none; }
+  .month-panel.active { display: block; }
+  .month-total { text-align: right; color: #6b625c; font-size: 13px; margin-top: 8px; }
   .total { font-size: 26px; font-weight: 800; }
   .fees { color: #6b625c; font-size: 13px; margin-top: 8px; line-height: 1.8; }
   ul.rules { background: #fff; border-radius: 12px; padding: 16px 18px 16px 36px; box-shadow: 0 1px 3px rgba(0,0,0,.06); font-size: 15px; }
@@ -68,6 +74,10 @@
   </div>
 
   <h2><span data-zh>全部赛程</span><span data-en>All Bookings</span></h2>
+  <div class="tabs">
+    <button class="tab-btn active" data-month="2026-11" onclick="showMonth('2026-11')"><span data-zh>2026年11月</span><span data-en>Nov 2026</span></button>
+  </div>
+  <div class="month-panel active" data-month="2026-11">
   <table>
     <tr>
       <th><span data-zh>日期</span><span data-en>Date</span></th>
@@ -83,6 +93,8 @@
     <tr><td><span data-zh>11月22日周日</span><span data-en>Sun, Nov 22</span></td><td>4:00–6:00 PM</td><td><span data-zh>1号场</span><span data-en>Court 1</span></td><td><span data-zh>竞技</span><span data-en>Competitive</span></td><td>$80.85</td></tr>
     <tr><td><span data-zh>11月25日周三</span><span data-en>Wed, Nov 25</span></td><td>6:00–8:00 PM</td><td><span data-zh>3号场</span><span data-en>Court 3</span></td><td><span data-zh>竞技</span><span data-en>Competitive</span></td><td>$80.85</td></tr>
   </table>
+  <div class="month-total"><span data-zh>2026年11月小计：$485.10（6 场）</span><span data-en>Nov 2026 subtotal: $485.10 (6 bookings)</span></div>
+  </div>
 
   <h2><span data-zh>费用总览</span><span data-en>Cost Overview</span></h2>
   <div class="card">
@@ -109,7 +121,7 @@
     <div><span data-zh>⏱️ 请提前几分钟到场热身，准时开打。</span><span data-en>⏱️ Arrive a few minutes early to warm up; games start on time.</span></div>
   </div>
 
-  <footer><span data-zh>最后更新：2026年11月23日</span><span data-en>Last updated: Nov 23, 2026</span></footer>
+  <footer><span data-zh>最后更新：2026年11月24日</span><span data-en>Last updated: Nov 24, 2026</span></footer>
 </div>
 <script>
   function setLang(l) {
@@ -117,6 +129,21 @@
     document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
     document.getElementById('btn-en').classList.toggle('active', l === 'en');
   }
+  function showMonth(key) {
+    document.querySelectorAll('.tab-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.month === key);
+    });
+    document.querySelectorAll('.month-panel').forEach(function (p) {
+      p.classList.toggle('active', p.dataset.month === key);
+    });
+  }
+  (function () {
+    var now = new Date();
+    var key = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    if (document.querySelector('.month-panel[data-month="' + key + '"]')) {
+      showMonth(key);
+    }
+  })();
 </script>
 </body>
 </html>
